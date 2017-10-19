@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<!-- Made by Fraser Hislop	fraserh@hotmail.co.nz -->
+	<!-- Floating Label CSS and jQuery adapted from https://bootsnipp.com/snippets/featured/floating-labels-in-3-lines-of-jquery -->
+	<!-- Helper Text jQuery adapted from https://stackoverflow.com/a/1206099 -->
+    <meta charset="utf-8">
+    <title>Demo</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form>
+		<div class="[ form-group ]">
+			<input placeholder="Placeholder Text" data-toggle="floatLabel" data-value="no-js">
+			<label style="">Placeholder Text</label>
+			<div>
+			<label class="helper">Helper Text</label>
+		</div>
+		<br><br><br>
+		<div class="[ form-group ]">
+			<input placeholder="Placeholder Text 2" data-toggle="floatLabel" data-value="no-js">
+			<label style="">Placeholder Text 2</label>
+			<div>
+			<label class="helper">Helper Text 2</label>
+		</div>
+    </form>
+
+    <script src="jquery.js"></script>
+    <script>
+		$( document ).ready(function() { // run code on open
+			
+			// Floating Labels
+			$('[data-toggle="floatLabel"]').attr('data-value', $(this).val()).on('keyup change', function() {
+				$(this).attr('data-value', $(this).val());
+			});
+			
+			$("input").next().next().fadeOut(0); // Hide Helper Text on start
+			
+			$("input") // Change Inputs on Focus, Unfocus, Hover and Unhover
+			.focus(function () {
+				$(this).next().next().fadeIn(250);
+				$(this).addClass("elementFocused");
+			})
+			.blur(function () {
+				 $(this).next().next().fadeOut(250);
+				 $(this).removeClass("elementFocused");
+			})
+			.hover(function () {
+				$(this).addClass("elementHovered");
+			}, function () {
+				$(this).removeClass("elementHovered");
+			}); 
+		});
+    </script>
+</body>
+</html>
